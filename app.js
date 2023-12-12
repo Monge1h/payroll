@@ -6,6 +6,7 @@ import logger from 'morgan'
 // Routes
 import employeeRouter from './routes/employee.js'
 import exchangeRateRoutes from './routes/exchangeRates.js'
+import payrollRoutes from './routes/payrolls.js'
 
 var app = express();
 
@@ -14,8 +15,10 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
+
 app.use('/api/employee', employeeRouter);
 app.use('/api/exchange_rates', exchangeRateRoutes);
+app.use('/api/payroll', payrollRoutes)
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -24,14 +27,19 @@ app.use(function(req, res, next) {
 
 // error handler
 app.use(function(err, req, res, next) {
-  // set locals, only providing error in development
-  res.locals.message = err.message;
-  res.locals.error = req.app.get('env') === 'development' ? err : {};
+ const isDevelopment = req.app.get('env') === 'development';
 
-  // render the error page
-  res.status(err.status || 500);
-  res.render('error');
+  const errorResponse = {
+    message: isDevelopment ? err.message : 'There was an erro on the app',
+  };
+
+  if (isDevelopment) {
+    errorResponse.stack = err.stack;
+    errorResponse.details = err.details;
+  }
+
+
+  return res.status(500).json(errorResponse);
 });
-
 
 export default app
