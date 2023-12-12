@@ -1,0 +1,37 @@
+
+create endpoints
+- /employee - (post) add new employee
+	{
+    "name": "John Doe",
+    "country": "USA",
+    "base_salary": 1000,
+    "currency": "USD"
+	}
+
+- /employee - (get) - Add pagination
+	- Fetch lists of all employees and their details
+
+
+- /rate (post) set an exchange rate
+{
+    "from_currency": "USD",
+    "to_currency": "EUR",
+    "rate": 0.85
+}
+
+- /calculate-payroll?currency=EUR || default currency USD
+Calculate the total payroll for all employees in the specified currency. This should convert every employee's salary to the requested currency using the rates from the Exchange Rates Table.
+
+
+Bonus (Optional):
+
+Implement authentication to secure the API endpoints.
+Provide validation for input data (e.g., check if currency codes are valid, if exchange rates are positive numbers, etc.).
+Handle edge cases where an exchange rate is not available.
+
+create enterprises and a relationship between the enterprise and the employe
+
+
+tables
+Employee - [x]
+ExchangeRate - []
