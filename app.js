@@ -1,11 +1,11 @@
 import createError from 'http-errors'
 import express from 'express'
-import path from 'path'
 import cookieParser from 'cookie-parser'
 import logger from 'morgan'
 
 // Routes
 import employeeRouter from './routes/employee.js'
+import exchangeRateRoutes from './routes/exchangeRates.js'
 
 var app = express();
 
@@ -15,6 +15,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
 app.use('/api/employee', employeeRouter);
+app.use('/api/exchange_rates', exchangeRateRoutes);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

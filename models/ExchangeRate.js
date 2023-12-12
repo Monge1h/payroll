@@ -9,8 +9,14 @@ export const ExchangeRate = sequelize.define('exchange_rate', {
 		primaryKey: true,
 		autoIncrement: true
 	},
-	from_currency: DataTypes.STRING,
-	to_currency: DataTypes.STRING,
+	from_currency: {
+		type: DataTypes.STRING,
+		unique: 'compositeIndex'
+	}, 
+	to_currency: {
+		type: DataTypes.STRING,
+		unique: 'compositeIndex'
+	},
 	rate: DataTypes.REAL,
 }, {
 	timestamps: true
