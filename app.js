@@ -30,7 +30,7 @@ app.use(function(err, req, res, next) {
  const isDevelopment = req.app.get('env') === 'development';
 
   const errorResponse = {
-    message: isDevelopment ? err.message : 'There was an erro on the app',
+    message: isDevelopment ? err.message : 'There was an error on the app',
   };
 
   if (isDevelopment) {
