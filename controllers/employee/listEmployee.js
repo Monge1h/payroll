@@ -1,9 +1,9 @@
-
-// importar el modelo de empleados despues
-// const Employee = require('../../models/employee');
+import { Employee } from '../../models/Employee.js'
 
 export const listEmployee = async (req, res) => {
-	return res.status(200).json({message: 'listEmployee', data: []});
+	// todo add pagination
+	const employee = await Employee.findAll()
+	return res.status(200).json({message: 'list of employee', data: employee});
 }
 
 

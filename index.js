@@ -2,7 +2,7 @@ import app from './app.js'
 import {sequelize} from './database/database.js'
 
 // Import models in order to create tables
-import './models/Employe.js'
+import './models/Employee.js'
 import './models/ExchangeRate.js'
 
 
